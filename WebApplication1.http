@@ -1,0 +1,33 @@
+@WebApplication1_HostAddress = http://localhost:5062
+
+### Register a new user
+POST {{WebApplication1_HostAddress}}/api/Users/register
+Content-Type: application/json
+
+{
+  "username": "john_doe",
+  "email": "john@example.com",
+  "password": "SecurePassword123"
+}
+
+### Get user by ID (replace `1` with the actual user ID you get from registration response)
+GET {{WebApplication1_HostAddress}}/api/Users/1
+Accept: application/json
+
+### Upload Bid Document (replace BID_GUID with a real Bid ID)
+POST {{WebApplication1_HostAddress}}/api/BidDocuments/upload
+Content-Type: application/json
+
+{
+  "bidId": "BID_GUID",
+  "name": "Technical Proposal",
+  "description": "Technical documentation for the bid.",
+  "filePath": "/documents/tech-proposal.pdf",
+  "fileSize": 204800,
+  "contentType": "application/pdf",
+  "documentType": 0
+}
+
+### Get Documents by Bid ID (replace BID_GUID with the same Bid ID)
+GET {{WebApplication1_HostAddress}}/api/BidDocuments/bid/BID_GUID
+Accept: application/json
